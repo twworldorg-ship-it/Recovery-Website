@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlueTrace Quantum</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= DESIGN TOKENS ================= */
+:root {
+  --bg: #020617;
+  --primary: #2563ff;
+  --accent: #00f0ff;
+  --text: #e6f1ff;
+  --glass: rgba(255,255,255,0.04);
+  --radius: 18px;
+  --max: 1200px;
+}
+
+/* ================= GLOBAL ================= */
+* {margin:0;padding:0;box-sizing:border-box;}
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x:hidden;
+}
+
+/* ================= CANVAS BG ================= */
+canvas {
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  max-width: var(--max);
+  margin:auto;
+  padding:0 20px;
+}
+
+/* ================= NAV ================= */
+nav {
+  position: fixed;
+  width:100%;
+  backdrop-filter: blur(12px);
+  background: rgba(2,6,23,0.7);
+  z-index:999;
+}
+.nav-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:70px;
+}
+nav h1 {
+  font-family:'Orbitron';
+  color:var(--accent);
+}
+nav ul {
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+nav a {
+  color:var(--text);
+  text-decoration:none;
+  opacity:0.8;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height:100vh;
+  display:flex;
+  align-items:center;
+}
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.hero h1 {
+  font-family:'Orbitron';
+  font-size:3.5rem;
+}
+.hero span {
+  color:var(--accent);
+  text-shadow:0 0 20px var(--accent);
+}
+.hero p {
+  margin:25px 0;
+  opacity:0.7;
+}
+
+/* BUTTON */
+.btn {
+  padding:15px 30px;
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border:none;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+.btn:hover {
+  box-shadow:0 0 30px var(--accent);
+}
+
+/* ================= DASHBOARD ================= */
+.panel {
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  padding:25px;
+  border-radius:var(--radius);
+}
+
+/* FAKE LIVE GRAPH */
+.graph {
+  height:150px;
+  display:flex;
+  align-items:flex-end;
+  gap:6px;
+}
+.bar {
+  flex:1;
+  background:linear-gradient(var(--primary),var(--accent));
+  animation:grow 2s ease forwards;
+}
+@keyframes grow {
+  from {height:10px;}
+  to {height:100%;}
+}
+
+/* ================= SERVICES ================= */
+.services {
+  padding:120px 0;
+  text-align:center;
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:50px;
+}
+.card {
+  padding:30px;
+  background:var(--glass);
+  border-radius:var(--radius);
+  transition:0.3s;
+}
+.card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 0 40px rgba(0,240,255,0.2);
+}
+
+/* ================= METRICS ================= */
+.metrics {
+  padding:100px 0;
+  display:flex;
+  justify-content:space-around;
+  text-align:center;
+}
+.metrics h2 {
+  color:var(--accent);
+}
+
+/* ================= CTA ================= */
+.cta {
+  text-align:center;
+  padding:100px 0;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align:center;
+  padding:40px;
+  opacity:0.6;
+}
+
+@media(max-width:900px){
+  .hero-grid {
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>
+  <div class="container nav-inner">
+    <h1>BlueTrace Q</h1>
+    <ul>
+      <li><a href="#">Platform</a></li>
+      <li><a href="#">Intel</a></li>
+      <li><a href="#">API</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <h1>Quantum <span>Crypto Intelligence</span></h1>
+      <p>Real-time blockchain tracing, AI-driven detection, and advanced recovery intelligence.</p>
+      <a href="https://forms.gle/qij3ZtsCXkFKSHma8" target="_blank">
+  <button class="btn">Initialize Scan</button>
+</a>
+    </div>
+
+    <div class="panel">
+      <p>Live Transaction Analytics</p>
+      <div class="graph">
+        <div class="bar" style="height:60%"></div>
+        <div class="bar" style="height:80%"></div>
+        <div class="bar" style="height:50%"></div>
+        <div class="bar" style="height:90%"></div>
+        <div class="bar" style="height:70%"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <h2>Core Systems</h2>
+    <div class="grid">
+      <div class="card">AI Blockchain Scanner</div>
+      <div class="card">Fraud Pattern Engine</div>
+      <div class="card">Recovery Intelligence</div>
+      <div class="card">Risk Monitoring</div>
+    </div>
+  </div>
+</section>
+
+<section class="metrics">
+  <div><h2>$1B+</h2><p>Assets Traced</p></div>
+  <div><h2>20K+</h2><p>Cases</p></div>
+  <div><h2>99.8%</h2><p>Detection Rate</p></div>
+</section>
+
+<a href="https://forms.gle/qij3ZtsCXkFKSHma8" target="_blank">
+  <button class="btn">Start Now</button>
+</a>
+
+<footer>© 2026 BlueTrace Quantum Systems</footer>
+
+<script>
+
+/* ===== CANVAS ANIMATION ===== */
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    vx: Math.random()*0.5,
+    vy: Math.random()*0.5
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach(p=>{
+    p.x+=p.vx;
+    p.y+=p.vy;
+
+    if(p.x>canvas.width || p.x<0) p.vx*=-1;
+    if(p.y>canvas.height || p.y<0) p.vy*=-1;
+
+    ctx.fillStyle="#00f0ff";
+    ctx.fillRect(p.x,p.y,2,2);
+  });
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+</script>
+
+</body>
+</html>
